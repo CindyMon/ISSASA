@@ -1,53 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Botones</title>
+    <title>Botones Verticales</title>
     <style>
-        body {
-            margin:8px;
-            padding: 0;
-            display: flex;
-            justify-content:first baseline;
-            align-items:first baseline;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
         .long-button {
-            display: inline-block;
-            padding: 15px 500px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #0078d4; /* Color de fondo del botón */
-            border: none;
-            border-radius: 450px;
+            display: block; /* Hace que cada enlace ocupe toda la línea disponible */
+            width: 1000px; /* Ancho del botón (puedes ajustarlo según tu preferencia) */
+            padding: 10px;
+            margin: 10px auto; /* Márgenes automáticos para centrar el botón horizontalmente */
+            background-color: #007bff;
+            color: white;
             text-align: center;
             text-decoration: none;
-            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
             transition: background-color 0.3s;
         }
-        .long-button {
-            display: inline-block;
-            padding: 15px 500px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-            background-color: #0078d4; /* Color de fondo del botón */
-            border: none;
-            border-radius: 400px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+
         .long-button:hover {
-            background-color: #005a9e; /* Color de fondo al pasar el ratón */
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
     <a href="https://www.ejemplo.com" class="long-button" target="_blank">CONSEJO DIRECTIVO</a>
+    <a href="https://www.ejemplo.com" class="long-button" target="_blank">DIRECTOR GENERAL</a>
 </body>
 </html>
