@@ -5,14 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Botones Verticales</title>
     <style>
+        body {
+            justify-content:first baseline;
+        }
         .long-button {
             display: block; /* Hace que cada enlace ocupe toda la línea disponible */
-            width: 1300px; /* Ancho del botón (puedes ajustarlo según tu preferencia) */
+            width: 900px; /* Ancho del botón (puedes ajustarlo según tu preferencia) */
             padding: 10px;
-            margin: 10px auto; /* Márgenes automáticos para centrar el botón horizontalmente */
+            margin: 5px auto; /* Márgenes automáticos para centrar el botón horizontalmente */
             background-color: #007bff;
             color: white;
-            text-align: center;
+            text-align:center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .long-button2 {
+            display: block; /* Hace que cada enlace ocupe toda la línea disponible */
+            width: 750px; /* Ancho del botón (puedes ajustarlo según tu preferencia) */
+            padding: 10px;
+            margin: 2px auto; /* Márgenes automáticos para centrar el botón horizontalmente */
+            background-color: #007bff;
+            color: white;
+            text-align:center;
             text-decoration: none;
             border-radius: 5px;
             font-size: 16px;
@@ -22,10 +38,13 @@
         .long-button:hover {
             background-color: #0056b3;
         }
+        .long-button2:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <a href="https://www.ejemplo.com" class="long-button" target="_blank">CONSEJO DIRECTIVO</a>
-    <a href="https://www.ejemplo.com" class="long-button" target="_blank">DIRECTOR GENERAL</a>
+    <a href="https://www.ejemplo.com" class="long-button2" target="_blank">DIRECTOR GENERAL</a>
 </body>
 </html>
