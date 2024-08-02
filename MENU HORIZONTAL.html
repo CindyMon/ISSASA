@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botones Horizontales con Imagen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px; /* Espacio entre los botones */
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+        .button2 {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #ffffff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-image {
+            width: 40px; /* Ajusta el tamaño de la imagen según sea necesario */
+            height: 40px; /* Ajusta el tamaño de la imagen según sea necesario */
+            margin-right: 10px; /* Espacio entre la imagen y el texto */
+        }
+
+        .button-text {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <a href="https://www.ejemplo.com" class="button" target="_blank">
+            <span class="button-text">Documentos</span>
+        </a>
+        <a href="https://www.ejemplo.com" class="button" target="_blank">
+            <span class="button-text">Registros</span>
+        </a>
+        <a href="https://www.ejemplo.com" class="button" target="_blank">
+            <span class="button-text">Politica de calidad</span>
+        </a>
+        <a href="https://www.ejemplo.com" class="button2" target="_blank">
+            <img src="https://github.com/CindyMon/ISSASA/blob/main/LOGO.png?raw=true" alt="Imagen 1" class="button-image">
+        </a>
+        <a href="https://www.ejemplo.com" class="button" target="_blank">
+            <span class="button-text">Objetivos de calidad</span>
+        </a>
+        <a href="https://www.ejemplo.com" class="button" target="_blank">
+            <span class="button-text">Manual de calidad</span>
+        </a>
+
+    </div>
+</body>
+</html>
