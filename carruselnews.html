@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrusel de Imágenes con Enlaces</title>
+    <title>Carrusel de Imágenes con Enlaces y Texto</title>
     <style>
         .carousel-container {
             width: 100%;
@@ -18,6 +18,7 @@
 
         .carousel-item {
             min-width: 100%;
+            position: relative;
         }
 
         .carousel-item img {
@@ -25,6 +26,16 @@
             height: auto;
             display: block;
             cursor: pointer; /* Añadido para mostrar que es clickeable */
+        }
+
+        .carousel-item .caption {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
         }
 
         .controls {
@@ -48,32 +59,47 @@
     <div class="carousel">
         <div class="carousel-item">
             <img id="image1" src="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg" alt="Imagen 1" onclick="openLink(1)">
+            <div class="caption" id="caption1">Texto de la Imagen 1</div>
         </div>
         <div class="carousel-item">
             <img id="image2" src="https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg" alt="Imagen 2" onclick="openLink(2)">
+            <div class="caption" id="caption2">Texto de la Imagen 2</div>
         </div>
         <div class="carousel-item">
             <img id="image3" src="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg" alt="Imagen 3" onclick="openLink(3)">
+            <div class="caption" id="caption3">Texto de la Imagen 3</div>
         </div>
     </div>
 </div>
 
-<!-- Controles para cambiar las URLs de las imágenes -->
+<!-- Controles para cambiar las URLs de las imágenes y los enlaces -->
 <div class="controls">
     <div>
         <label for="url1">Nueva URL para Imagen 1:</label>
         <input type="text" id="url1" value="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg">
-        <button onclick="updateImageURL(1)">Actualizar Imagen 1</button>
+        <label for="link1">Nueva URL de Enlace 1:</label>
+        <input type="text" id="link1" value="https://example.com/destino1">
+        <label for="caption1Text">Texto Imagen 1:</label>
+        <input type="text" id="caption1Text" value="Texto de la Imagen 1">
+        <button onclick="updateImage(1)">Actualizar Imagen 1</button>
     </div>
     <div>
         <label for="url2">Nueva URL para Imagen 2:</label>
         <input type="text" id="url2" value="https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg">
-        <button onclick="updateImageURL(2)">Actualizar Imagen 2</button>
+        <label for="link2">Nueva URL de Enlace 2:</label>
+        <input type="text" id="link2" value="https://example.com/destino2">
+        <label for="caption2Text">Texto Imagen 2:</label>
+        <input type="text" id="caption2Text" value="Texto de la Imagen 2">
+        <button onclick="updateImage(2)">Actualizar Imagen 2</button>
     </div>
     <div>
         <label for="url3">Nueva URL para Imagen 3:</label>
         <input type="text" id="url3" value="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg">
-        <button onclick="updateImageURL(3)">Actualizar Imagen 3</button>
+        <label for="link3">Nueva URL de Enlace 3:</label>
+        <input type="text" id="link3" value="https://example.com/destino3">
+        <label for="caption3Text">Texto Imagen 3:</label>
+        <input type="text" id="caption3Text" value="Texto de la Imagen 3">
+        <button onclick="updateImage(3)">Actualizar Imagen 3</button>
     </div>
 </div>
 
@@ -87,6 +113,25 @@
         3: 'https://example.com/destino3'
     };
 
+    let captions = {
+        1: 'Texto de la Imagen 1',
+        2: 'Texto de la Imagen 2',
+        3: 'Texto de la Imagen 3'
+    };
+
+    // Cargar imágenes, enlaces y textos desde localStorage si existen
+    window.onload = () => {
+        if (localStorage.getItem("images")) {
+            const savedImages = JSON.parse(localStorage.getItem("images"));
+            savedImages.forEach((image, index) => {
+                document.getElementById(`image${index + 1}`).src = image.url;
+                document.getElementById(`caption${index + 1}`).textContent = image.caption;
+                links[index + 1] = image.link;
+            });
+        }
+        showNextImage();
+    };
+
     // Función para cambiar la imagen cada 5 segundos
     function showNextImage() {
         currentIndex = (currentIndex + 1) % totalItems;
@@ -95,7 +140,6 @@
     }
 
     setInterval(showNextImage, 5000); // Cambia cada 5 segundos
-    window.onload = showNextImage;
 
     // Función para abrir el enlace de destino cuando se hace clic en la imagen
     function openLink(imageIndex) {
@@ -105,17 +149,32 @@
         }
     }
 
-    // Función para actualizar la URL de la imagen en el carrusel
-    function updateImageURL(imageNumber) {
-        const newURL = document.getElementById(`url${imageNumber}`).value;
-        const imageElement = document.getElementById(`image${imageNumber}`);
+    // Función para actualizar la imagen, el enlace y el texto en el carrusel
+    function updateImage(imageNumber) {
+        const newImageURL = document.getElementById(`url${imageNumber}`).value;
+        const newLink = document.getElementById(`link${imageNumber}`).value;
+        const newCaption = document.getElementById(`caption${imageNumber}Text`).value;
 
-        if (newURL) {
-            imageElement.src = newURL;
-        }
+        // Actualizamos la imagen
+        document.getElementById(`image${imageNumber}`).src = newImageURL;
+        // Actualizamos el texto debajo de la imagen
+        document.getElementById(`caption${imageNumber}`).textContent = newCaption;
+        // Actualizamos el enlace
+        links[imageNumber] = newLink;
+
+        // Guardar cambios en localStorage para persistencia
+        const savedImages = [
+            { url: document.getElementById('url1').value, link: links[1], caption: document.getElementById('caption1Text').value },
+            { url: document.getElementById('url2').value, link: links[2], caption: document.getElementById('caption2Text').value },
+            { url: document.getElementById('url3').value, link: links[3], caption: document.getElementById('caption3Text').value }
+        ];
+
+        localStorage.setItem("images", JSON.stringify(savedImages));
     }
 </script>
 
 </body>
+</html>
+
 </html>
 
