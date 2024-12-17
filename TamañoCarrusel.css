@@ -1,0 +1,16 @@
+/* custom-styles.css */
+/* Ajustar el tamaño del carrusel de noticias */
+.news-carousel {
+    width: 80%; /* Ajusta el porcentaje según tus necesidades */
+    margin: 0 auto; /* Centra el carrusel */
+}
+
+.news-carousel .news-item {
+    height: 200px; /* Ajusta la altura según tus necesidades */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+}
+
+.news-carousel .news-item img {
+    width: 100%; /* Asegura que las imágenes se ajusten al contenedor */
+    height: auto; /* Mantiene la proporción de las imágenes */
+}
