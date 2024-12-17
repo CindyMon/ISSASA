@@ -1,16 +1,27 @@
-/* custom-styles.css */
-/* Ajustar el tamaño del carrusel de noticias */
-.news-carousel {
-    width: 80%; /* Ajusta el porcentaje según tus necesidades */
-    margin: 0 auto; /* Centra el carrusel */
+<style>
+/* Reducir el tamaño de las imágenes y el carrusel */
+.ms-news-webpart .ms-webpart-title, .ms-news-webpart .ms-webpart-content {
+    max-width: 80% !important; /* Ajusta este valor según sea necesario */
+    margin: 0 auto;
 }
 
-.news-carousel .news-item {
-    height: 200px; /* Ajusta la altura según tus necesidades */
-    overflow: hidden; /* Oculta el contenido que se desborda */
+/* Reducir el tamaño de las imágenes dentro de la Web Part de Noticias */
+.ms-news-webpart .news-image {
+    width: 70% !important; /* Ajusta este valor para cambiar el tamaño de las imágenes */
+    height: auto;
 }
 
-.news-carousel .news-item img {
-    width: 100%; /* Asegura que las imágenes se ajusten al contenedor */
-    height: auto; /* Mantiene la proporción de las imágenes */
+/* Reducir el tamaño de los textos */
+.ms-news-webpart .news-title {
+    font-size: 16px !important; /* Cambia el tamaño de los títulos */
 }
+
+.ms-news-webpart .news-description {
+    font-size: 14px !important; /* Cambia el tamaño de las descripciones */
+}
+
+/* Reducir el espaciado entre los elementos del carrusel */
+.ms-news-webpart .carousel-item {
+    padding: 10px !important;
+}
+</style>
