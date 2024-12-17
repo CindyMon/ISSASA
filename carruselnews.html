@@ -26,6 +26,20 @@
             display: block;
             cursor: pointer; /* Añadido para mostrar que es clickeable */
         }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        .controls input {
+            width: 300px;
+            padding: 5px;
+        }
+
+        .controls button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +55,25 @@
         <div class="carousel-item">
             <img id="image3" src="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg" alt="Imagen 3" onclick="openLink(3)">
         </div>
+    </div>
+</div>
+
+<!-- Controles para cambiar las URLs de las imágenes -->
+<div class="controls">
+    <div>
+        <label for="url1">Nueva URL para Imagen 1:</label>
+        <input type="text" id="url1" value="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg">
+        <button onclick="updateImageURL(1)">Actualizar Imagen 1</button>
+    </div>
+    <div>
+        <label for="url2">Nueva URL para Imagen 2:</label>
+        <input type="text" id="url2" value="https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg">
+        <button onclick="updateImageURL(2)">Actualizar Imagen 2</button>
+    </div>
+    <div>
+        <label for="url3">Nueva URL para Imagen 3:</label>
+        <input type="text" id="url3" value="https://2.bp.blogspot.com/_ntaO39RNHbQ/THvAi949LEI/AAAAAAAACxQ/Zh2qotIvOdI/s1600/wallpapers_de_paisajes_hd_47-1920x1080.jpg">
+        <button onclick="updateImageURL(3)">Actualizar Imagen 3</button>
     </div>
 </div>
 
@@ -71,7 +104,18 @@
             window.open(url, '_blank');
         }
     }
+
+    // Función para actualizar la URL de la imagen en el carrusel
+    function updateImageURL(imageNumber) {
+        const newURL = document.getElementById(`url${imageNumber}`).value;
+        const imageElement = document.getElementById(`image${imageNumber}`);
+
+        if (newURL) {
+            imageElement.src = newURL;
+        }
+    }
 </script>
 
 </body>
 </html>
+
